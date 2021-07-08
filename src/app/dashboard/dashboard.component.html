@@ -16,9 +16,20 @@
       <div *ngIf="name.errors?.minlength">
         Name must be at least 4 characters long.
       </div>
-      <div *ngIf="name.errors?.forbiddenName">
-        Name cannot be Bob.
-      </div>
+  </div>
+
+  <label for="productPrice">Prezzo</label>
+  <input ngModel class="form-control"
+  required minlength="1" #price="ngModel" name="price" id="productPrice" placeholder="Prezzo" type="number">
+
+  <div *ngIf="price.invalid && (price.dirty || price.touched)"
+      class="alert">
+        <div *ngIf="price.errors?.required">
+          Price is required.
+        </div>
+        <div *ngIf="name.errors?.minlength">
+          Price must be at least 1 characters long.
+        </div>
   </div>
 
     <label for="productImg">URL Immagine</label>
