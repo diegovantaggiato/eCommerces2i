@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/database';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Location } from '@angular/common'
 
 @Component({
   selector: 'app-right-page',
@@ -9,17 +10,20 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class RightPageComponent implements OnInit {
   constructor(private db: AngularFireDatabase,
-              private route: ActivatedRoute) { }
+              private route: ActivatedRoute,
+              private router: Router,
+              private _location: Location) { }
 
   product;
   productDetail; // dettagli generali prodotto
   productTechnical; // variabile d'appoggio
   techList= [] // lista specifiche tecniche
   spinner: boolean = true;
+  deleteButton: boolean = false;
+  id = this.route.snapshot.paramMap.get('id')
 
   ngOnInit(): void {
-    let id = this.route.snapshot.paramMap.get('id')
-    this.db.object('products/' + id)
+    this.db.object('products/' + this.id)
     .valueChanges()
     .subscribe(response => {
       this.spinner = false
@@ -32,6 +36,11 @@ export class RightPageComponent implements OnInit {
       this.productTechnical = this.product.technical
       console.log(this.productDetail);
 
+      let token = localStorage.getItem('token')
+      if(this.productDetail.createdBy == token && token != ''){
+        this.deleteButton = true
+      }
+
       let obj = JSON.parse(JSON.stringify(this.productTechnical))
       let test = []
       for (var key in obj) {
@@ -43,6 +52,17 @@ export class RightPageComponent implements OnInit {
         }
       }
       })
-  }
+    }
 
+    //Funzione per tornare alla pagina precedente
+    backClicked(){
+      this._location.back();
+    }
+
+
+    deleteProduct() {
+      console.log('it works');
+      this.db.object('products/' + this.id).remove()
+      this.router.navigate(['/'])
+    }
 }

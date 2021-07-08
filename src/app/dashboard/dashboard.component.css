@@ -8,10 +8,11 @@ section > form {
   display: flex;
   justify-content: center;
   height: 80vh;
-  background: rgba(31, 29, 29, 0.671);
+  background-color: rgba(226, 209, 186, 0.301);
+  border:rgb(0, 0, 0) 4px solid;
   padding: 30px;
   border-radius: 50px;
-  color: white;
+  color: black;
   overflow: overlay;
 }
 
@@ -49,4 +50,22 @@ form > button {
 
 .send {
   width: 35%!important;
+}
+
+@media only screen and (max-width: 800px) {
+  section > form {
+    margin: 40px auto;
+    width: 90%;
+    background-color: rgba(255, 255, 255, 0);
+    border: none;
+  }
+
+  .customForm{
+    flex-direction: column;
+  }
+
+  .customForm > input{
+    width: 100%;
+    margin: 10px 0 ;
+  }
 }

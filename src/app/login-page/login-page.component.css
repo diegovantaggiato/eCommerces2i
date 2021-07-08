@@ -1,3 +1,23 @@
 .logout {
   margin-top: 300px;
 }
+
+form {
+  margin: auto;
+  text-align: center;
+}
+
+.logout {
+  width: 80%;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  margin-top: 300px;
+}
+
+.logout > a {
+  color: blue;
+  text-decoration: underline;
+  font-size: 25px;
+}
+

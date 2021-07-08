@@ -10,12 +10,15 @@ import { GetProductsService } from '../services/get-products.service';
 export class DashboardComponent implements OnInit {
 
 
+  token = localStorage.getItem('token')
   product = {
-    technical:{}
+    technical:{},
+    createdBy: this.token
   }; // variabile da pushare nel database
   customDiv: boolean = false
   arrayInput: any[] = []; // array per aggiungere riga di tech. elements
   button: boolean = false
+  customInvalid: boolean = true // check su custom input
 
   constructor( private service: GetProductsService) { }
 
@@ -46,15 +49,19 @@ export class DashboardComponent implements OnInit {
 
   // aggiungere riga specifiche tecniche e aggiunge quella precedente nell'oggetto
   addInput(key, value){
+    if(this.customInvalid == false && key.value != ''){
 
-    let objKey = key.value;
-    let objValue = value.value;
-    this.product.technical[objKey] = objValue
+      let objKey = key.value;
+      let objValue = value.value;
+      this.product.technical[objKey] = objValue
 
-    let verifyLength = this.arrayInput.length + 1;
-    this.arrayInput.push(verifyLength)
+      let verifyLength = this.arrayInput.length + 1;
+      this.arrayInput.push(verifyLength)
 
-    this.button = true
+      this.button = true
+      this.customInvalid = false
+    }
+    else null;
   }
 
   delete(key){
@@ -72,6 +79,11 @@ export class DashboardComponent implements OnInit {
     console.log(this.product);
 
    this.dbRef.push(this.product)
+  }
+
+  checkCustom(key) {
+    if(key != '') this.customInvalid = false
+    else this.customInvalid = true
   }
 
 }

@@ -9,6 +9,8 @@ import { AuthServiceService } from '../services/auth-service.service';
 })
 export class LoginPageComponent implements OnInit {
 
+  invalidLogin: boolean = false;
+  invalidParameters: boolean = false;
   accounts; // account esistenti nel db
   dbRef = this.service.getAccounts() // db ref
   key; //variabile di appoggio per ottenere chiave valore
@@ -40,31 +42,33 @@ export class LoginPageComponent implements OnInit {
    this.accounts.forEach(el => {
     if(el.value.email == credentials.email && el.value.password == credentials.password){
       localStorage.setItem('token', el.value.uid)
-    }
+      this.router.navigate(['/'])
+    } else this.invalidLogin = true
   });
-    this.router.navigate(['/'])
 }
 
 
   signUp(credentials){
-    for(let i = 0; i < this.accounts.length; i++) {
-      if(this.accounts[i].value.email == credentials.email ){
-        this.checkAccount = true
-      } else { this.checkAccount = false }
-    }
+    if(credentials.email != '' || credentials.password != ''){
+      for(let i = 0; i < this.accounts.length; i++) {
+        if(this.accounts[i].value.email == credentials.email ){
+          this.checkAccount = true
+        } else { this.checkAccount = false }
+      }
 
-    if(this.checkAccount == false){
-        this.dbRef.ref.push(credentials)
-        .then((snap) => {
-          this.key ={
-            uid: snap.key,
-            email: credentials.email,
-            password: credentials.password
-            }
-          this.service.addAccounts(this.key)
-        })
-        this.router.navigate(['/'])
-    }
+      if(this.checkAccount == false){
+          this.dbRef.ref.push(credentials)
+          .then((snap) => {
+            this.key ={
+              uid: snap.key,
+              email: credentials.email,
+              password: credentials.password
+              }
+            this.service.addAccounts(this.key)
+          })
+          this.router.navigate(['/'])
+      }
+  } else this.invalidParameters = true;
 
   }
 

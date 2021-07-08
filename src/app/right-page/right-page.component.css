@@ -4,6 +4,12 @@
   left: 45%;
 }
 
+.back{
+  margin-top: 80px;
+  margin-left: 50px;
+}
+
+
 section {
   height: 100vh;
 }
@@ -12,14 +18,19 @@ section {
   display: flex;
   flex-direction: row;
   width: 80%;
-  height: auto;
+  height: max-content;
   margin: 8% auto;
+}
+
+.containerProd > div {
+  width: 70%;
+  height: 50%;
 }
 
 .productDetail {
   display: flex;
   flex-direction: column;
-  width: 60%;
+  height: 100%;
   margin: auto auto;
 }
 
@@ -27,10 +38,31 @@ section {
   margin: auto;
 }
 
-.prodImage {
-  height: 50vh;
+.prodImage > img {
+  height: 300px;
 }
 
-.prodImage > img {
-  height: 100%;
+.deleteContainer{
+  display: flex;
+  width: 80%;
+  justify-content: flex-end;
+  margin: auto;
+}
+
+
+@media only screen and (max-width: 800px) {
+  .containerProd {
+    flex-direction: column;
+    width: 100%;
+  }
+  .prodImage {
+    margin:20px auto;
+    width: 100vw;
+  }
+
+  .back {
+    position: fixed;
+    margin-left: 8px;
+    margin-top: 35px;
+  }
 }

@@ -1,3 +1,5 @@
+<button class="btn btn-dark back" (click)="backClicked()">Go Back</button>
+
 <section class="right">
 
   <div class="spinner">
@@ -7,10 +9,9 @@
   <div class="containerProd">
 
       <div class="prodImage">
-        <img [src]="productDetail?.imgUrl">
+        <img class="img-fluid mx-auto d-block" [src]="productDetail?.imgUrl">
       </div>
-      <div
-      class="productDetail">
+      <div class="productDetail">
         <div class="detailContainer"    >
           <h2><b>{{ productDetail?.name }}</b></h2>
           <ul *ngIf="techList != null">
@@ -22,7 +23,10 @@
           <p>{{ productDetail?.description }}</p>
       </div>
       </div>
+  </div>
 
+  <div class="deleteContainer">
+      <button *ngIf="deleteButton" class="deleteProduct btn btn-danger" (click)="deleteProduct()">Delete</button>
   </div>
 
 </section>

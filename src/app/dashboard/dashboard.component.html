@@ -60,10 +60,10 @@
     <div *ngIf="customDiv">
       <div  *ngFor="let i of arrayInput" class="customInput">
         <div class="customForm">
-          <input  #key [name]="i" id="customKey" placeholder="Parametro" type="text">
+          <input  #key [name]="i" id="customKey" placeholder="Parametro" type="text" (keyup)="checkCustom(key.value)">
           <input  #value [name]="'value_' + i" id="customValue" placeholder="Valore" type="text">
-          <button class="btn btn-dark" type="button" (click)="addInput(key, value)">Conferma</button>
-          <button (click)="delete(key)">Elimina</button>
+          <button [disabled]="customInvalid" class="btn btn-dark" type="button" (click)="addInput(key, value)">Aggiungi</button>
+          <button class="btn btn-danger" (click)="delete(key)">Elimina</button>
         </div>
       </div>
     </div>

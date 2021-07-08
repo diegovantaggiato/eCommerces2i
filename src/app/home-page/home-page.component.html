@@ -2,21 +2,22 @@
 
 <section class="central">
 
-  <div class="spinner">
-    <mat-spinner *ngIf="spinner" class="loader"></mat-spinner>
-  </div>
 
-  <div *ngIf="!spinner" class="wall">
+  <div class="wall">
     <img src="./assets/images/office-wooden-desk-workspace.jpg">
   </div>
 
-  <div *ngIf="!spinner" class="divider"></div>
+  <div class="divider"></div>
 
 
-  <div class="containerProducts" *ngIf="!spinner">
+  <div class="containerProducts">
 
     <div class="searchBar">
       <input #query  (keyup)="filterProduct(query.value)" type="text" class="form-control" placeholder="Search...">
+    </div>
+
+    <div class="spinner">
+      <mat-spinner *ngIf="spinner" class="loader"></mat-spinner>
     </div>
 
     <div
