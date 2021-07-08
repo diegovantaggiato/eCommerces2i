@@ -42,6 +42,29 @@
 
 </div>
 
+<div class="containerProducts">
+
+
+  <div
+  [routerLink]="['product/', product.key]"
+   *ngFor="let product of products"
+   class="product"
+   (click)="getDetail(product)">
+
+    <div class="productImg">
+      <img [src]="product.value.imgUrl">
+    </div>
+
+    <div class="productDescritpion">
+      <h2>{{ product.value.name | summary }}</h2>
+      <p>{{ product.value.description | summary }}</p>
+      <h3>{{ product.value.price }}$</h3>
+    </div>
+
+  </div>
+
+</div>
+
 <div class="logout" *ngIf="isLogged$">
   <a (click)="logout()">Logout</a>
 </div>

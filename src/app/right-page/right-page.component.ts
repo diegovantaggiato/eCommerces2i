@@ -28,13 +28,11 @@ export class RightPageComponent implements OnInit {
     .subscribe(response => {
       this.spinner = false
       this.product = response
-      //console.log(this.product);
       /* svuoto array */
       this.techList = []
       this.productDetail = this.product
       /* lista specifiche tecniche */
       this.productTechnical = this.product.technical
-      console.log(this.productDetail);
 
       let token = localStorage.getItem('token')
       if(this.productDetail.createdBy == token && token != ''){
@@ -61,7 +59,6 @@ export class RightPageComponent implements OnInit {
 
 
     deleteProduct() {
-      console.log('it works');
       this.db.object('products/' + this.id).remove()
       this.router.navigate(['/'])
     }

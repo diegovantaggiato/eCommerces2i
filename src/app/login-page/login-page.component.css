@@ -21,3 +21,56 @@ form {
   font-size: 25px;
 }
 
+/* container dei prodotti */
+.containerProducts {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin: 70px auto;
+}
+
+/* singolo prodotto */
+.product{
+  display: flex;
+  margin: 0 auto;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  width: 30%;
+  height: 45%;
+  cursor: pointer;
+  border-radius: 9px;
+  padding: 5px;
+}
+
+.product:hover {
+  background-color: rgba(128, 128, 128, 0.048);
+}
+
+.productImg {
+  height: 160px;
+}
+
+.productImg > img {
+  height: inherit;
+  margin: 0 auto;
+}
+
+@media only screen and (max-width: 800px) {
+  .containerProducts{
+    flex-direction: column;
+  }
+
+  .product {
+    margin: 0 auto;
+    width: 90%;
+  }
+
+  .wall, .divider {
+    display: none;
+  }
+
+  .form-control{
+    width: 80%;
+  }
+}
