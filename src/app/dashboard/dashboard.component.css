@@ -1,0 +1,52 @@
+section {
+  height: 100vh;
+}
+
+section > form {
+  margin: auto;
+  margin-top: 10%;
+  display: flex;
+  justify-content: center;
+  height: 80vh;
+  background: rgba(31, 29, 29, 0.671);
+  padding: 30px;
+  border-radius: 50px;
+  color: white;
+  overflow: overlay;
+}
+
+.title > h2 {
+  text-align: center;
+}
+
+form > button {
+  margin: 15px auto;
+  width: fit-content;
+  right: 0px;
+}
+
+.requiredInput {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+}
+
+.customInput {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.customForm {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+.customForm > input{
+  width: 48%;
+}
+
+.send {
+  width: 35%!important;
+}

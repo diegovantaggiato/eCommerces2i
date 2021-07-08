@@ -1,0 +1,28 @@
+<section class="right">
+
+  <div class="spinner">
+    <mat-spinner *ngIf="spinner" class="loader"></mat-spinner>
+  </div>
+
+  <div class="containerProd">
+
+      <div class="prodImage">
+        <img [src]="productDetail?.imgUrl">
+      </div>
+      <div
+      class="productDetail">
+        <div class="detailContainer"    >
+          <h2><b>{{ productDetail?.name }}</b></h2>
+          <ul *ngIf="techList != null">
+            <li *ngFor="let tech of techList">
+              <b>{{ tech.key }}</b> : {{ tech.value }}
+            </li>
+          </ul>
+
+          <p>{{ productDetail?.description }}</p>
+      </div>
+      </div>
+
+  </div>
+
+</section>

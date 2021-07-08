@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "fir-demo-ecc12": {
+      "hosting": {
+        "eCommerce": [
+          "fir-demo-ecc12"
+        ]
+      }
+    }
+  }
+}

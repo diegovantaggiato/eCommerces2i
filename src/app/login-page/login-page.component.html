@@ -1,0 +1,50 @@
+<div class="signContainer" *ngIf="!isLogged$">
+
+    <div class="signIn" *ngIf="!sign">
+      <h2 class="form-signin-heading row mt-5 mx-5 pt-5">Please sign in</h2>
+      <form class="form-signin container mt-5 px-5" #f="ngForm" (ngSubmit)="signIn(f.value)">
+          <!-- <div *ngIf="invalidLogin" class="alert alert-danger">Invalid username and/or password.</div> -->
+          <div class="row my-3 px-5">
+              <label for="inputEmail" class="sr-only px-5">Email address</label>
+              <input type="email" id="inputEmail" name="email" ngModel class="form-control px-5" placeholder="Email address" required autofocus>
+          </div>
+          <div class="row my-3 px-5">
+              <label for="inputPassword" class="sr-only px-5">Password</label>
+              <input type="password" id="inputPassword" name="password" ngModel class="form-control px-5" placeholder="Password" required>
+          </div>
+          <div class="row my-3 px-5">
+              <button class="btn btn-lg btn-primary btn-block px-5" type="submit">Sign in</button>
+          </div>
+      </form>
+    </div>
+
+    <div class="signUp" *ngIf="sign">
+    <h2 class="form-signin-heading row mt-5 mx-5 pt-5">Sign Up</h2>
+    <form class="form-signin container mt-5 px-5" #f2="ngForm" (ngSubmit)="signUp(f2.value)">
+        <div *ngIf="invalidLogin" class="alert alert-danger">Invalid username and/or password.</div>
+        <div class="row my-3 px-5">
+            <label for="inputEmail" class="sr-only px-5">Email address</label>
+            <input type="email" id="inputEmail" name="email" ngModel class="form-control px-5" placeholder="Email address" required autofocus>
+        </div>
+        <div class="exEmail bg-danger" *ngIf="checkAccouts"><p>Email esistente</p></div>
+        <div class="row my-3 px-5">
+            <label for="inputPassword" class="sr-only px-5">Password</label>
+            <input type="password" id="inputPassword" name="password" ngModel class="form-control px-5" placeholder="Password" required>
+        </div>
+        <div class="row my-3 px-5">
+            <button class="btn btn-lg btn-primary btn-block px-5" type="submit">Sign Up</button>
+        </div>
+    </form>
+
+    </div>
+
+    <a (click)="change()" *ngIf="sign" >Sign In</a>
+    <a (click)="change()" *ngIf="!sign" >Sign Up</a>
+
+</div>
+
+<div class="logout" *ngIf="isLogged$">
+  <a (click)="logout()">Logout</a>
+</div>
+
+

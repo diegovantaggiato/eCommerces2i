@@ -1,0 +1,76 @@
+<section class="container">
+  <form class="requiredInput" #form="ngForm" (ngSubmit)="addProduct(form.value)">
+    <div class="title">
+      <h2>INSERISCI DATI PRODOTTO</h2>
+    </div>
+
+    <label for="productName">Nome prodotto</label>
+    <input ngModel class="form-control"
+    required minlength="2" #name="ngModel" name="name" id="productName" placeholder="Nome" type="text">
+
+    <div *ngIf="name.invalid && (name.dirty || name.touched)"
+    class="alert">
+      <div *ngIf="name.errors?.required">
+        Name is required.
+      </div>
+      <div *ngIf="name.errors?.minlength">
+        Name must be at least 4 characters long.
+      </div>
+      <div *ngIf="name.errors?.forbiddenName">
+        Name cannot be Bob.
+      </div>
+  </div>
+
+    <label for="productImg">URL Immagine</label>
+    <input ngModel class="form-control"
+    required minlength="4" #url="ngModel" name="imgUrl" id="productImg" placeholder="URL" type="text">
+
+    <div *ngIf="url.invalid && (url.dirty || url.touched)"
+    class="alert">
+      <div *ngIf="url.errors?.required">
+        ImgUrl is required.
+      </div>
+      <div *ngIf="url.errors?.minlength">
+        ImgUrl must be at least 4 characters long.
+      </div>
+      <div *ngIf="url.errors?.forbiddenName">
+        ImgUrl cannot be Bob.
+      </div>
+    </div>
+
+    <label for="productDesc">Descrizione prodotto</label>
+    <input ngModel class="form-control"
+    required minlength="4" #descr name="description" id="productDesc" placeholder="Descrizione" type="text">
+
+    <div *ngIf="descr.invalid && (descr.dirty || descr.touched)"
+    class="alert">
+      <div *ngIf="descr.errors?.required">
+        Description is required.
+      </div>
+      <div *ngIf="descr.errors?.minlength">
+        Description must be at least 4 characters long.
+      </div>
+      <div *ngIf="descr.errors?.forbiddenName">
+        Description cannot be Bob.
+      </div>
+    </div>
+
+    <button class="btn btn-dark" (click)="unlockTech()">Inserisci Specifiche tecniche</button>
+
+    <div *ngIf="customDiv">
+      <div  *ngFor="let i of arrayInput" class="customInput">
+        <div class="customForm">
+          <input  #key [name]="i" id="customKey" placeholder="Parametro" type="text">
+          <input  #value [name]="'value_' + i" id="customValue" placeholder="Valore" type="text">
+          <button class="btn btn-dark" type="button" (click)="addInput(key, value)">Conferma</button>
+          <button (click)="delete(key)">Elimina</button>
+        </div>
+      </div>
+    </div>
+
+    <button routerLink="/" *ngIf="button" type="submit" [disabled]="!form.valid" class="send btn btn-primary" (click)="enableCustom()" (click)="send()">Invia</button>
+
+  </form>
+
+
+</section>
