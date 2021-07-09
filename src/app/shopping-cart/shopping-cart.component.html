@@ -1,0 +1,28 @@
+<div class="containerProducts">
+
+
+  <h1>Il tuo carrello</h1>
+
+    <div
+     *ngFor="let product of products"
+     class="product"
+    >
+
+      <div class="productImg">
+        <img [src]="product.value.imgUrl">
+      </div>
+
+      <div class="productDescritpion">
+        <h2>{{ product.value.name | summary }}</h2>
+        <p>{{ product.value.description | summary }}</p>
+        <h3>{{ product.value.price }}$</h3>
+        <button class="btn btn-danger" (click)="removeFromShoppingCart(product.key)" type="button">Rimuovi</button>
+      </div>
+
+    </div>
+
+    <div class="tot">
+      <h1> Totale Carrello : {{ totCart }}$</h1>
+    </div>
+
+  </div>

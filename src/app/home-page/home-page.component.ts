@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { GetProductsService } from '../services/get-products.service';
 
 @Component({
@@ -15,8 +16,10 @@ export class HomePageComponent implements OnInit {
   detail: boolean = false; // booleano per far apparire div dettaglio prodotto
   spinner: boolean = true;
   filteredProducts;
+  token= localStorage.getItem('token')
+  buyButton = this.service.addToCart(this.token)
 
-  constructor(private service: GetProductsService) { }
+  constructor(private service: GetProductsService, private router: Router) { }
 
 
   dbRef = this.service.getData()
@@ -59,4 +62,14 @@ export class HomePageComponent implements OnInit {
     this.products;
   }
 
+  addToShoppingCart(productId) {
+
+    if(this.token == null){
+      this.router.navigate(['/login'])
+    } else {
+      let prodToCart = {productId : productId}
+      this.buyButton.push(prodToCart)
+    }
+
+  }
 }

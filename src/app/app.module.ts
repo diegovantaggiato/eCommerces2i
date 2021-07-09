@@ -22,6 +22,7 @@ import { LoginPageComponent } from './login-page/login-page.component';
 import { JwtHelperService, JwtModule } from '@auth0/angular-jwt';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthServiceService } from './services/auth-service.service';
+import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { AuthServiceService } from './services/auth-service.service';
     DashboardComponent,
     NotFoundComponent,
     NavbarComponent,
-    LoginPageComponent
+    LoginPageComponent,
+    ShoppingCartComponent
   ],
   imports: [
     BrowserModule,
@@ -51,6 +53,7 @@ import { AuthServiceService } from './services/auth-service.service';
       {path:'product/:id', component: RightPageComponent},
       {path: 'dashboard', component: DashboardComponent, canActivate:[AuthServiceService]},
       {path: 'login', component: LoginPageComponent},
+      {path: 'shoppingCart', component: ShoppingCartComponent, canActivate:[AuthServiceService]},
       {path: '**', component: NotFoundComponent}
     ])
   ],

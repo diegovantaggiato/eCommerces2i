@@ -42,8 +42,10 @@
 
 </div>
 
-<div class="containerProducts">
+<div class="containerProducts" *ngIf="isLogged$">
 
+
+<h1>I tuoi prodotti</h1>
 
   <div
   [routerLink]="['product/', product.key]"

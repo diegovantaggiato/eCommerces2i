@@ -84,7 +84,8 @@ export class LoginPageComponent implements OnInit {
             this.key ={
               uid: snap.key,
               email: credentials.email,
-              password: credentials.password
+              password: credentials.password,
+              shoppingCart: {}
               }
             this.service.addAccounts(this.key)
           })
