@@ -74,6 +74,7 @@ export class RightPageComponent implements OnInit {
       } else {
         let prodToCart = {productId : productId}
         this.buyButton.push(prodToCart)
+        window.alert('Prodotto aggiunto al carrello')
       }
 
     }
