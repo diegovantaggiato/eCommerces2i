@@ -7,5 +7,8 @@
         ]
       }
     }
+  },
+  "projects": {
+    "default": "fir-demo-ecc12"
   }
 }

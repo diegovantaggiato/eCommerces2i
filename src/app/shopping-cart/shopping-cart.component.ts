@@ -63,6 +63,7 @@ export class ShoppingCartComponent implements OnInit {
       if(this.account[0].value.shoppingCart[i].productId == productId ){
         let prodToDelete = i
         this.serviceProducts.removeFromCart(this.token, prodToDelete)
+        break;
       }
     }
   }
