@@ -1,3 +1,11 @@
+.spinner {
+  width: 100%;
+}
+
+.loader {
+  margin: auto;
+}
+
 .logout {
   margin-top: 300px;
 }

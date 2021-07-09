@@ -16,13 +16,14 @@ export class ShoppingCartComponent implements OnInit {
   products; // prodotti nel carrello
   shoppingCart = this.serviceProducts.addToCart(this.token)
   totCart = 0;
+  spinner: boolean = true;
 
   constructor(private service: AuthServiceService, private serviceProducts: GetProductsService) { }
 
   ngOnInit(): void {
     this.dbRef = this.service.getAccounts() // ottengo dati account specifico
     this.dbRef.on('value', (snap) => {
-    //  this.spinner = false;
+      this.spinner = false;
       const accounts = [];
       snap.forEach((child) => {
           if(child.key == this.token && this.token != null){

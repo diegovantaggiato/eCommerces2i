@@ -3,6 +3,10 @@
 
   <h1>Il tuo carrello</h1>
 
+ <div class="spinner">
+    <mat-spinner *ngIf="spinner" class="loader"></mat-spinner>
+  </div>
+
     <div
      *ngFor="let product of products"
      class="product"

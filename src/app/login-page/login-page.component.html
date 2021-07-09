@@ -47,6 +47,10 @@
 
 <h1>I tuoi prodotti</h1>
 
+<div class="spinner">
+  <mat-spinner *ngIf="spinner" class="loader"></mat-spinner>
+</div>
+
   <div
   [routerLink]="['product/', product.key]"
    *ngFor="let product of products"

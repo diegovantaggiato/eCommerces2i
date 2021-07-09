@@ -20,10 +20,11 @@ export class LoginPageComponent implements OnInit {
   checkAccount: boolean; // controllo se account esiste già
   dbProdRef = this.getProducts.getData() // Ref dei prodotti nel db
   products;// lista dei prodotti dell'utente
-  techList: any[];
+  techList: any[]; //  dettagli tecnici
   productDetail: any;
   detail: boolean;
   productTechnical: any;
+  spinner: boolean = true;
 
   constructor(private router:Router,
               private service: AuthServiceService,
@@ -46,6 +47,7 @@ export class LoginPageComponent implements OnInit {
         this.isLogged()
 
         this.dbProdRef.on('value', (snap) => {
+          this.spinner = false
           const items = [];
           let token = localStorage.getItem('token')
           snap.forEach((child) => {
