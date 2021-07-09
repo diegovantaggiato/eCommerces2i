@@ -41,8 +41,8 @@ export class ShoppingCartComponent implements OnInit {
        snap.forEach((child) => {
           if(this.account[0].value.shoppingCart[i].productId == child.key){
             let price = child.val()
-            this.totCart = this.totCart + Number(price.price) // totale carrello
-
+            this.totCart = this.totCart + Number(price.price) // tot carrello
+            //console.log(this.totCartArr);
             products.push({
               key: child.key,
               value: child.val()
@@ -61,7 +61,8 @@ export class ShoppingCartComponent implements OnInit {
     for(var i in this.account[0].value.shoppingCart){
 
       if(this.account[0].value.shoppingCart[i].productId == productId ){
-        let prodToDelete = i
+        this.totCart = 0;
+        let prodToDelete = i;
         this.serviceProducts.removeFromCart(this.token, prodToDelete)
         break;
       }
