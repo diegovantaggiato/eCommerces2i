@@ -74,9 +74,12 @@ export class LoginPageComponent implements OnInit {
 
   signUp(credentials){
     if(credentials.email != '' || credentials.password != ''){
-      for(let i = 0; i < this.accounts.length; i++) {
+      for(let i = 0; i < this.accounts.length + 1; i++) {
         if(this.accounts[i].value.email == credentials.email ){
           this.checkAccount = true
+          console.log(this.checkAccount);
+
+          break
         } else { this.checkAccount = false }
       }
 
