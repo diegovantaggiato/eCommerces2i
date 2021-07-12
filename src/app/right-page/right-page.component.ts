@@ -35,6 +35,8 @@ export class RightPageComponent implements OnInit {
       /* svuoto array */
       this.techList = []
       this.productDetail = this.product
+      console.log(this.product);
+
       /* lista specifiche tecniche */
       this.productTechnical = this.product.technical
 
@@ -69,12 +71,14 @@ export class RightPageComponent implements OnInit {
 
     addToShoppingCart(productId) {
 
+      console.log(productId);
+
       if(this.token == null){
         this.router.navigate(['/login'])
       } else {
-        let prodToCart = {productId : productId}
+        let prodToCart = {productId : this.id}
         this.buyButton.push(prodToCart)
-        window.alert('Prodotto aggiunto al carrello')
+        window.alert('Prodotto aggiunto al carrello!')
       }
 
     }

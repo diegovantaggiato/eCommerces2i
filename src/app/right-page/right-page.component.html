@@ -27,8 +27,8 @@
   </div>
 
   <div class="deleteContainer">
-      <button *ngIf="!deleteButton" type="button" class="btn btn-dark" (click)="addToShoppingCart(product.key)">Aggiungi al carrello</button>
-      <button *ngIf="deleteButton" class="deleteProduct btn btn-danger" (click)="deleteProduct()">Delete</button>
+    <button *ngIf="!deleteButton" type="button" class="btn btn-dark" (click)="addToShoppingCart(productDetail.key)">Aggiungi al carrello</button>
+    <button *ngIf="deleteButton" class="deleteProduct btn btn-danger" (click)="deleteProduct()">Delete</button>
   </div>
 
 </section>
